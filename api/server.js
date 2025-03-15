@@ -9,10 +9,11 @@ const authRoutes = require('./routes/index');
 
 const app = express();
 const PORT = 5000;
+//const __dirname=path.resolve();//for deployment purposes
 
 //  Middleware
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://gopirajhotel.onrender.com/",
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -21,6 +22,10 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use('/', authRoutes);
 
+//app.use(express.static(path.join(__dirname,"/my-app/dist")));//for deployment
+// app.get('/',(_,res)=>{
+//     res.sendFile(path.resolve(__dirname,"my-app","dist","index.html"));
+// });
 //  Multer Storage Configuration for image upload
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
