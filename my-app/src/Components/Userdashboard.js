@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import './UserDashboard.css';
-
+const API_URL = "https://myhotelapp-2.onrender.com/";
 const UserDashboard = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [bookings, setBookings] = useState([]);
@@ -15,7 +15,7 @@ const UserDashboard = () => {
   const fetchUserDetails = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/signup', {
+      const response = await axios.get(`${API_URL}/signup`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUserDetails(response.data);
@@ -27,7 +27,7 @@ const UserDashboard = () => {
   const fetchUserBookings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/bookings', {
+      const response = await axios.get(`${API_URL}/bookings`, {
         headers: { Authorization: `Bearer ${token}` }
       });
   

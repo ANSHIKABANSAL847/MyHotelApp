@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button, Table, Form, Container, Row, Col, Card } from "react-bootstrap";
-
+const API_URL = "https://myhotelapp-2.onrender.com"
 function Apipractice() {
     const [student, setStudent] = useState([]);
     const [name, setName] = useState("");
@@ -14,7 +14,7 @@ function Apipractice() {
     }, []);
 
     function getData() {
-        fetch('http://localhost:5000/signup')
+        fetch(`${API_URL}/signup`)
             .then((res) => res.json())
             .then((response) => {
                 if (response.status === 200 && Array.isArray(response.msg)) {
@@ -33,7 +33,7 @@ function Apipractice() {
 
     function apiPost() {
         const values = { name, email, password };
-        fetch('http://localhost:5000/signup', {
+        fetch(`${API_URL}/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values)
@@ -52,7 +52,7 @@ function Apipractice() {
     }
 
     function deleteData(item) {
-        fetch(`http://localhost:5000/signup?name=${item.name}`, {
+        fetch(`${API_URL}/signup?name=${item.name}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         })

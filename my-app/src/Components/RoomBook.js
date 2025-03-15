@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./RoomBook.css";
 
+const API_URL = "https://myhotelapp-2.onrender.com";
 const Room = ({ room }) => {
   const navigate = useNavigate();
   const [showDetails, setShowDetails] = useState(false);
@@ -58,7 +59,7 @@ const Room = ({ room }) => {
 
     // API call to save booking data
     try {
-      const response = await axios.post('http://localhost:5000/bookings', payload, {
+      const response = await axios.post(`${API_URL}/bookings`, payload, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookNow from "./RoomBook";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-
+const API_URL = "https://myhotelapp-2.onrender.com";
 function Home() {
   const [rooms, setRooms] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
@@ -18,7 +18,7 @@ function Home() {
   const fetchRooms = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/rooms");
+      const response = await axios.get(`${API_URL}/rooms`);
       setRooms(response.data.msg);
       setFilteredRooms(response.data.msg);
       setLoading(false);
@@ -45,7 +45,7 @@ function Home() {
 
     try {
       // Get all existing bookings
-      const bookingsResponse = await axios.get("http://localhost:5000/bookings");
+      const bookingsResponse = await axios.get(`${API_URL}/bookings`);
       const existingBookings = bookingsResponse.data.data;
 
       // Filter out rooms that are already booked for the selected dates

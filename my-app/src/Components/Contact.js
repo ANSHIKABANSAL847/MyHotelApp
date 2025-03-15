@@ -3,6 +3,7 @@ import { Container, Row, Col,  Button, Form,Accordion} from "react-bootstrap";
 import slide1 from "../assets/Deluxe-1.jpg";
 import Footer from "./Footer"
 import axios from 'axios';
+const API_URL = "https://myhotelapp-2.onrender.com";
 const HeroSection = () => {
   return (
     <section
@@ -51,7 +52,7 @@ const ContactForm = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/contact', formData);
+      const response = await axios.post(`${API_URL}/contact`, formData);
       alert(response.data.message);
     } catch (error) {
       alert(error.response?.data?.error || 'An error occurred. Please try again.');

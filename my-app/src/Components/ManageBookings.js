@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Container, Spinner, Card,Button } from "react-bootstrap";
 import axios from "axios";
-
+const API_URL = "https://myhotelapp-2.onrender.com"
 const ManageBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const ManageBookings = () => {
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/bookings");
+      const response = await axios.get(`${API_URL}/bookings`);
       setBookings(response.data.data);
     } catch (error) {
       console.error("Error fetching bookings:", error);
@@ -27,7 +27,7 @@ const ManageBookings = () => {
   const deleteBooking = async (id) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
-        await axios.delete(`http://localhost:5000/bookings/${id}`);
+        await axios.delete(`${API_URL}/bookings/${id}`);
         alert("Booking deleted successfully.");
         fetchBookings();
       } catch (error) {
