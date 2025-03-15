@@ -1,0 +1,81 @@
+/* RoomBook.css */
+
+.outer-container {
+  padding: 20px;
+}
+
+.bs {
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+.small-img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bigimg {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.card-text {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.amenities-list {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+
+.form-label, 
+.card-title, 
+.card-text,
+p {
+  cursor: default !important;
+}
+
+/* Keep pointer cursor only for interactive elements */
+button,
+select,
+input[type="date"],
+input[type="number"] {
+  cursor: pointer;
+}
+

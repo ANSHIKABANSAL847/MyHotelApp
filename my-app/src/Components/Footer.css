@@ -1,0 +1,45 @@
+.footer {
+    background-color: #000 !important;
+  }
+  
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    gap: 5px;
+  }
+  
+  .footer-link {
+    background: none !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 0;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+  
+  .footer-link:hover {
+    color: #ffc107 !important; /* Changes color on hover */
+    text-decoration: underline !important;
+    transform: translateX(5px);
+  }
+  
+  .social-icon {
+    color: white;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2);
+    color: #ffc107;
+  }
+  
+  /* Remove Bootstrap's default hover background */
+  .list-group-item {
+    background-color: transparent !important;
+  }
+  
+  .list-group-item:hover {
+    background-color: transparent !important;
+  }
+  

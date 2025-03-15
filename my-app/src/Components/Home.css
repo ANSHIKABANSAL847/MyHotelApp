@@ -1,0 +1,230 @@
+/* Adjust carousel height */
+.carousel-container {
+    width: 100%;
+    height: 90vh; /* Reduce height */
+  }
+  
+  /* Adjust image size and crop from bottom */
+  .carousel-image {
+    width: 100%;
+    height: 90vh; /* Match carousel height */
+    object-fit: cover; /* Ensures full coverage */
+    object-position: top; /* Aligns top, crops bottom */
+  }
+  
+  
+  
+  
+  
+  
+  /* Room Card Styling */
+  .room-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hover effect */
+  .room-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Make images consistent */
+  .room-image {
+    height: 250px;
+    object-fit: cover;
+  }
+  
+
+
+
+  /* Dining Section Background */
+.dining-section {
+    background-color: #d4e2f1; /* Dark Theme */
+    /* padding: 50px 20px;
+    border-radius: 15px;
+    text-align: center; */
+  }
+  
+  /* Main Dining Image */
+  .dining-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .dining-image {
+    width: 80%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Cuisine Card Styling */
+  .cuisine-card {
+    margin: 20px 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .cuisine-card:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Circular Cuisine Images */
+  .cuisine-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Cuisine Title */
+  .cuisine-title {
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Menu Button */
+  .menu-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+
+  .facilities-section {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  
+  .facility-card {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .facility-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .facility-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .facility-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .facility-card:hover .facility-image {
+    transform: scale(1.1);
+  }
+  
+  .facility-name {
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .facility-description {
+    color: #555;
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+  
+
+
+
+  /* .room-details {
+    padding: 20px;
+  }
+  
+  .room-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .room-description {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  } */
+  
+  
+  .section-title {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  
+  .amenities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .amenities-category {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .amenities-list {
+    list-style-type: none;
+    padding: 0;
+    columns: 2; /* Split list into two columns */
+  }
+  
+  
+  .amenities-list li {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }

@@ -1,0 +1,35 @@
+
+.nav-hover {
+  transition: 0.3s ease-in-out;
+}
+
+.nav-hover:hover {
+  color: #ffd700 !important; /* Gold hover effect */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* Reduce Navbar Height */
+.navbar {
+  padding: 8px 0 !important;
+}
+
+/* Responsive Navbar */
+@media (max-width: 991px) {
+  .nav-hover {
+    text-align: center;
+    padding: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
