@@ -1,67 +1,58 @@
 const express = require("express");
 const cors = require("cors");
-// for image upload 
 const path = require("path");
 const multer = require("multer");
-const main = require('./config/db');  // Import the database connection
-const authRoutes = require('./routes/index');
+const { v2: cloudinary } = require("cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const dotenv = require("dotenv");
+const main = require("./config/db");
+const authRoutes = require("./routes/index");
 
+dotenv.config();
 
 const app = express();
 const PORT = 5000;
-//const __dirname=path.resolve();//for deployment purposes
 
-//  Middleware
+// Middleware
 app.use(cors({
     origin: "https://gopirajhotel.onrender.com/",
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
-//  Image Upload Route
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use('/', authRoutes);
 
-//app.use(express.static(path.join(__dirname,"/my-app/dist")));//for deployment
-// app.get('/',(_,res)=>{
-//     res.sendFile(path.resolve(__dirname,"my-app","dist","index.html"));
-// });
-//  Multer Storage Configuration for image upload
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadPath = path.join(__dirname, "uploads");
-        cb(null, uploadPath);
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Configure Multer to use Cloudinary Storage
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "uploads", // Cloudinary folder
+        format: async (req, file) => "png", // Convert all images to PNG
+        public_id: (req, file) => Date.now() + '-' + file.originalname
     }
 });
+
 const upload = multer({ storage });
 
-//  Establish MongoDB Connection using `main()`
-let db;
-async function connectDB() {
-    try {
-        db = await main();  // Call main() from db.js
-        console.log(" Connected to MongoDB via db.js");
-    } catch (err) {
-        console.error(" MongoDB Connection Error:", err);
-    }
-} 
-
-
+// Image Upload Route
 app.post('/upload', upload.array('profileimages', 3), (req, res) => {
     if (!req.files || req.files.length === 0) {
-      return res.status(400).json({ message: 'Please upload at least one image' });
+        return res.status(400).json({ message: 'Please upload at least one image' });
     }
-  
-    const fileUrls = req.files.map((file) => `http://localhost:5000/uploads/${file.filename}`);
+    
+    const fileUrls = req.files.map((file) => file.path); // Cloudinary provides file.path as URL
     res.json({ fileUrls });
-  });
-  
+});
 
-
-
+// Fetch Images Route
 app.get("/images", async (req, res) => {
     try {
         const imageCollection = db.collection("images");
@@ -71,10 +62,20 @@ app.get("/images", async (req, res) => {
         res.status(500).json({ message: "Failed to fetch images", error: error.message });
     }
 });
+
+// Establish MongoDB Connection
+let db;
+async function connectDB() {
+    try {
+        db = await main();
+        console.log("Connected to MongoDB via db.js");
+    } catch (err) {
+        console.error("MongoDB Connection Error:", err);
+    }
+}
+
 // Start Server & Connect to DB
 app.listen(PORT, async () => {
-    await connectDB();  // Call DB connection function before handling requests
+    await connectDB();
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
-
