@@ -16,7 +16,7 @@ import ManageUser from "./Components/ManageUser";
 import ManageRoom from "./Components/ManageRoom"; 
 import Book1 from "./Components/Book1";
 import RoomDetails from "./Components/RoomDetails";  // Ensure correct import
-import BookingScreen from "./BookingScreen";
+//import BookingScreen from "./BookingScreen";
 import UserDashboard from "./Components/Userdashboard";
 
 
@@ -54,7 +54,7 @@ const App = () => {
           <Route path="users" element={<ManageUser />} />
           <Route path="room" element={<ManageRoom />} />
         </Route>
-        <Route path="/Bookingscreen" element={<BookingScreen/>} />
+        {/* <Route path="/Bookingscreen" element={<BookingScreen/>} /> */}
       </Routes>
     </BrowserRouter>
   );
