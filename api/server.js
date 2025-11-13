@@ -15,13 +15,22 @@ const PORT = 5000;
 
 // Middleware
 app.use(cors({
-    origin: "https://gopirajhotel.onrender.com/",
-    methods: "GET, POST, PUT, DELETE",
-    allowedHeaders: ['Content-Type', 'Authorization']
+  origin: [
+    "https://gopirajhotel.onrender.com",
+    "https://gopirajhotel.onrender.com/",
+    "http://localhost:3000",
+    "http://localhost:3000/"
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use('/', authRoutes);
+app.use((req, res, next) => {
+  console.log("Request Origin:", req.headers.origin);
+  next();
+});
 
 // Configure Cloudinary
 cloudinary.config({
